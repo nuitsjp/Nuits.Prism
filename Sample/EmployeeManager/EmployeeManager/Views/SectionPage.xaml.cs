@@ -1,8 +1,8 @@
 ﻿namespace EmployeeManager.Views
 {
-    public partial class MainPage
+    public partial class SectionPage
     {
-        public MainPage()
+        public SectionPage()
         {
             InitializeComponent();
         }

@@ -1,35 +1,40 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Nuits.Prism;
 
 namespace EmployeeManager.ViewModels
 {
-    public class MainPageViewModel : BindableBase, INavigationAware
+    public class MainPageViewModel : BindableBase
     {
-        private string _title;
-        public string Title
+        private readonly INavigationService _navigationService;
+        public DelegateCommand NavigationSectionListCommand { get; }
+        public DelegateCommand DeepLinkByLiteralCommand { get; }
+        public DelegateCommand DeepLinkByViewModelCommand { get; }
+        public MainPageViewModel(INavigationService navigationService)
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
-        }
+            _navigationService = navigationService;
 
-        public MainPageViewModel()
-        {
+            NavigationSectionListCommand = 
+                new DelegateCommand(() => _navigationService.NavigateAsync<SectionListPageViewModel>());
 
-        }
+            DeepLinkByLiteralCommand =
+                new DelegateCommand(
+                    () => _navigationService.NavigateAsync(
+                        "/NavigationPage/MainPage/SectionListPage/SelectedSection?sectionId=5"));
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
-        {
+            DeepLinkByViewModelCommand = new DelegateCommand(() =>
+            {
+                // ReSharper disable once UseObjectOrCollectionInitializer
+                var sectionPageNavigation = new Navigation<SectionPageViewModel>();
+                sectionPageNavigation.Parameters[SectionPageViewModel.SectionIdKey] = 9;
 
-        }
-
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-            if (parameters.ContainsKey("title"))
-                Title = (string)parameters["title"] + " and Prism";
+                _navigationService.NavigateAsync(
+                    new Navigation("NavigationPage"),
+                    new Navigation<MainPageViewModel>(),
+                    new Navigation<SectionListPageViewModel>(),
+                    sectionPageNavigation);
+            });
         }
     }
 }
