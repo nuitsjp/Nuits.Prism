@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuits.Prism", "Nuits.Prism\Nuits.Prism.csproj", "{CD34A360-E249-40A0-83CA-8330797788A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuits.Prism.Forms", "Nuits.Prism.Forms\Nuits.Prism.Forms.csproj", "{37B32ADC-812F-4D57-BE34-1A3A32C8B2D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuits.Prism.Unity.Forms", "Nuits.Prism.Unity.Forms\Nuits.Prism.Unity.Forms.csproj", "{D2610805-6234-473A-BECE-1929C8016F0C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D2A2BDD4-DD1E-4453-AD3D-51B23448397E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuits.Prism.Tests", "Nuits.Prism.Tests\Nuits.Prism.Tests.csproj", "{B5D253CF-1D31-4E78-BEDE-E65DD57D2572}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuits.Prism.Forms.Tests", "Nuits.Prism.Forms.Tests\Nuits.Prism.Forms.Tests.csproj", "{6ADD3E4D-3460-4078-9A63-072F2636A867}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuits.Prism.Unity.Forms.Tests", "Nuits.Prism.Unity.Forms.Tests\Nuits.Prism.Unity.Forms.Tests.csproj", "{B36E3A9C-2525-4072-8058-0F4CB3616AD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD34A360-E249-40A0-83CA-8330797788A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD34A360-E249-40A0-83CA-8330797788A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD34A360-E249-40A0-83CA-8330797788A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD34A360-E249-40A0-83CA-8330797788A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37B32ADC-812F-4D57-BE34-1A3A32C8B2D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37B32ADC-812F-4D57-BE34-1A3A32C8B2D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37B32ADC-812F-4D57-BE34-1A3A32C8B2D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37B32ADC-812F-4D57-BE34-1A3A32C8B2D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2610805-6234-473A-BECE-1929C8016F0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2610805-6234-473A-BECE-1929C8016F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2610805-6234-473A-BECE-1929C8016F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2610805-6234-473A-BECE-1929C8016F0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D253CF-1D31-4E78-BEDE-E65DD57D2572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D253CF-1D31-4E78-BEDE-E65DD57D2572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D253CF-1D31-4E78-BEDE-E65DD57D2572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D253CF-1D31-4E78-BEDE-E65DD57D2572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ADD3E4D-3460-4078-9A63-072F2636A867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ADD3E4D-3460-4078-9A63-072F2636A867}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ADD3E4D-3460-4078-9A63-072F2636A867}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ADD3E4D-3460-4078-9A63-072F2636A867}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B36E3A9C-2525-4072-8058-0F4CB3616AD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B36E3A9C-2525-4072-8058-0F4CB3616AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B36E3A9C-2525-4072-8058-0F4CB3616AD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B36E3A9C-2525-4072-8058-0F4CB3616AD3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B5D253CF-1D31-4E78-BEDE-E65DD57D2572} = {D2A2BDD4-DD1E-4453-AD3D-51B23448397E}
+		{6ADD3E4D-3460-4078-9A63-072F2636A867} = {D2A2BDD4-DD1E-4453-AD3D-51B23448397E}
+		{B36E3A9C-2525-4072-8058-0F4CB3616AD3} = {D2A2BDD4-DD1E-4453-AD3D-51B23448397E}
+	EndGlobalSection
+EndGlobal
