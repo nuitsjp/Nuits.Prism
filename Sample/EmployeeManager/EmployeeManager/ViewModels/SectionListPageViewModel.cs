@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using EmployeeManager.Models;
 using EmployeeManager.Models.Usecases;
 using Nuits.Prism;
+using Nuits.Prism.Navigation;
 using Prism.Navigation;
 
 namespace EmployeeManager.ViewModels

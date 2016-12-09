@@ -1,12 +1,12 @@
 ﻿using Prism.Mvvm;
 using EmployeeManager.Models;
 using EmployeeManager.Models.Usecases;
-using Nuits.Prism;
+using Nuits.Prism.Navigation;
 using Prism.Navigation;
 
 namespace EmployeeManager.ViewModels
 {
-    [NavigationName("SelectedSection")]
+    [PageNavigationName("SelectedSection")]
     public class SectionPageViewModel : BindableBase, INavigationAware
     {
         public const string SectionIdKey = "sectionId";

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Prism.Mvvm;
 using Prism.Navigation;
 
-namespace Nuits.Prism
+namespace Nuits.Prism.Navigation
 {
     /// <summary>
     /// Extension methods of INavigationService.
@@ -24,7 +24,8 @@ namespace Nuits.Prism
         public static Task NavigateAsync<TViewModel>(this INavigationService navigationService, NavigationParameters parameters = null, bool? useModalNavigation = null, bool animated = true)
             where TViewModel : BindableBase
         {
-            return navigationService.NavigateAsync(NavigationNameProvider.GetNavigationName<TViewModel>(), parameters, useModalNavigation, animated);
+            var pageNavigationInfo = PageNavigationInfoProvider.GetPageNavigationInfo<TViewModel>();
+            return navigationService.NavigateAsync(pageNavigationInfo.Name, parameters, useModalNavigation, animated);
         }
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace Nuits.Prism
         /// <param name="useModalNavigation"></param>
         /// <param name="animated"></param>
         /// <returns></returns>
-        public static Task NavigateAsync(this INavigationService navigationService, IEnumerable<Navigation> navigations, bool? useModalNavigation = null, bool animated = true)
+        public static Task NavigateAsync(this INavigationService navigationService, IEnumerable<PageNavigation> navigations, bool? useModalNavigation = null, bool animated = true)
         {
             if(!navigations.Any())
                 throw new ArgumentException("Navigations is 0.");
@@ -52,14 +53,14 @@ namespace Nuits.Prism
         }
 
         /// <summary>
-        /// Initiates navigation to the target specified by the <param name="navigations"/>.
+        /// Initiates navigation to the target specified by the <param name="pageNavigations"/>.
         /// </summary>
         /// <param name="navigationService"></param>
-        /// <param name="navigations"></param>
+        /// <param name="pageNavigations"></param>
         /// <returns></returns>
-        public static Task NavigateAsync(this INavigationService navigationService, params Navigation[] navigations)
+        public static Task NavigateAsync(this INavigationService navigationService, params PageNavigation[] pageNavigations)
         {
-            return NavigateAsync(navigationService, navigations, null);
+            return NavigateAsync(navigationService, pageNavigations, null);
         }
     }
 }

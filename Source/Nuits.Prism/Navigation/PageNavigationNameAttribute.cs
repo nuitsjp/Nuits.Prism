@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Nuits.Prism
+namespace Nuits.Prism.Navigation
 {
     /// <summary>
     /// Attribute for giving ViewModel a special page navigation name.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
-    public class NavigationNameAttribute : Attribute
+    public class PageNavigationNameAttribute : Attribute
     {
         /// <summary>
         /// The name of the target to navigate to.
@@ -17,7 +17,7 @@ namespace Nuits.Prism
         /// Create instance.
         /// </summary>
         /// <param name="name">Page navigation name.</param>
-        public NavigationNameAttribute(string name)
+        public PageNavigationNameAttribute(string name)
         {
             Name = name;
         }

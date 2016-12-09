@@ -11,7 +11,7 @@ namespace Nuits.Prism.Unity
         /// <summary>
         /// Registers a Page for navigation
         /// </summary>
-        /// <param name="container"><see cref="IUnityContainer"/> used to register type for Navigation.</param>
+        /// <param name="container"><see cref="IUnityContainer"/> used to register type for PageNavigation.</param>
         /// <param name="viewType">The type of Page to register</param>
         /// <param name="name">The unique name to register with the Page</param>
         /// <returns><see cref="IUnityContainer"/></returns>
@@ -23,7 +23,7 @@ namespace Nuits.Prism.Unity
         /// Registers a Page for navigation.
         /// </summary>
         /// <typeparam name="TView">The Type of Page to register</typeparam>
-        /// <param name="container"><see cref="IUnityContainer"/> used to register type for Navigation.</param>
+        /// <param name="container"><see cref="IUnityContainer"/> used to register type for PageNavigation.</param>
         /// <param name="name">The unique name to register with the Page</param>
         public virtual IUnityContainer RegisterTypeForNavigation<TView>(IUnityContainer container, string name = null) where TView : Page
         {
@@ -47,8 +47,8 @@ namespace Nuits.Prism.Unity
         /// </summary>
         /// <typeparam name="TView">Default View Type to be used across multiple Idioms if they are not specified directly.</typeparam>
         /// <typeparam name="TViewModel">The shared ViewModel</typeparam>
-        /// <param name="container"><see cref="IUnityContainer"/> used to register type for Navigation.</param>
-        /// <param name="name">The common name used for Navigation. If left empty or null will default to the ViewModel root name. i.e. MyPageViewModel => MyPage</param>
+        /// <param name="container"><see cref="IUnityContainer"/> used to register type for PageNavigation.</param>
+        /// <param name="name">The common name used for PageNavigation. If left empty or null will default to the ViewModel root name. i.e. MyPageViewModel => MyPage</param>
         /// <param name="desktopView">Desktop Specific View Type</param>
         /// <param name="tabletView">Tablet Specific View Type</param>
         /// <param name="phoneView">Phone Specific View Type</param>
@@ -64,7 +64,7 @@ namespace Nuits.Prism.Unity
         /// </summary>
         /// <typeparam name="TView">Default View Type to be shared across multiple Device Operating Systems if they are not specified directly.</typeparam>
         /// <typeparam name="TViewModel">Shared ViewModel Type</typeparam>
-        /// <param name="container"><see cref="IUnityContainer"/> used to register type for Navigation.</param>
+        /// <param name="container"><see cref="IUnityContainer"/> used to register type for PageNavigation.</param>
         /// <param name="name">The unique name to register with the Page. If left empty or null will default to the ViewModel root name. i.e. MyPageViewModel => MyPage</param>
         /// <param name="androidView">Android Specific View Type</param>
         /// <param name="iOSView">iOS Specific View Type</param>

@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using Prism.Navigation;
 using Nuits.Prism;
+using Nuits.Prism.Navigation;
 
 namespace EmployeeManager.ViewModels
 {
@@ -26,13 +27,13 @@ namespace EmployeeManager.ViewModels
             DeepLinkByViewModelCommand = new DelegateCommand(() =>
             {
                 // ReSharper disable once UseObjectOrCollectionInitializer
-                var sectionPageNavigation = new Navigation<SectionPageViewModel>();
+                var sectionPageNavigation = new PageNavigation<SectionPageViewModel>();
                 sectionPageNavigation.Parameters[SectionPageViewModel.SectionIdKey] = 9;
 
                 _navigationService.NavigateAsync(
-                    new Navigation("NavigationPage"),
-                    new Navigation<MainPageViewModel>(),
-                    new Navigation<SectionListPageViewModel>(),
+                    new PageNavigation("NavigationPage"),
+                    new PageNavigation<MainPageViewModel>(),
+                    new PageNavigation<SectionListPageViewModel>(),
                     sectionPageNavigation);
             });
         }

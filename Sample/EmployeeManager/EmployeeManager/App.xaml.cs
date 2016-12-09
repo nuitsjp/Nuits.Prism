@@ -6,6 +6,7 @@ using Prism.Unity;
 using EmployeeManager.Views;
 using Microsoft.Practices.Unity;
 using Nuits.Prism;
+using Nuits.Prism.Navigation;
 using Nuits.Prism.Unity;
 using Xamarin.Forms;
 using ContainerControlledLifetimeManager = Microsoft.Practices.Unity.ContainerControlledLifetimeManager;
@@ -16,15 +17,6 @@ namespace EmployeeManager
     {
         public App(IPlatformInitializer initializer = null) : base(initializer) { }
 
-        protected override void OnInitialized()
-        {
-            InitializeComponent();
-            
-            NavigationService.NavigateAsync(
-                new Navigation(nameof(NavigationPage)),
-                new Navigation<MainPageViewModel>());
-        }
-
         protected override void RegisterTypes()
         {
             // Add Services.
@@ -34,9 +26,18 @@ namespace EmployeeManager
 
             // Add Views.
             Container.RegisterTypeForNavigation<NavigationPage>();
-            Container.RegisterTypeForViewModelNavigation<MainPage, MainPageViewModel>();
-            Container.RegisterTypeForViewModelNavigation<SectionListPage, SectionListPageViewModel>();
-            Container.RegisterTypeForViewModelNavigation<SectionPage, SectionPageViewModel>();
+            Container.RegisterTypeForViewModelNavigation<MainPageViewModel>();
+            Container.RegisterTypeForViewModelNavigation<SectionListPageViewModel>();
+            Container.RegisterTypeForViewModelNavigation<SectionPageViewModel>();
+        }
+
+        protected override void OnInitialized()
+        {
+            InitializeComponent();
+
+            NavigationService.NavigateAsync(
+                new PageNavigation(nameof(NavigationPage)),
+                new PageNavigation<MainPageViewModel>());
         }
     }
 }

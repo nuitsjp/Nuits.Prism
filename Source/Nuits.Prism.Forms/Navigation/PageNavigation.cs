@@ -3,12 +3,12 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using Xamarin.Forms;
 
-namespace Nuits.Prism
+namespace Nuits.Prism.Navigation
 {
     /// <summary>
     /// This class abstracts page navigation.
     /// </summary>
-    public class Navigation
+    public class PageNavigation
     {
         /// <summary>
         /// Page navigation name.
@@ -24,7 +24,7 @@ namespace Nuits.Prism
         /// Create Instance.
         /// </summary>
         /// <param name="name">Page navigation name.</param>
-        public Navigation(string name)
+        public PageNavigation(string name)
         {
             Name = name;
             Parameters = new NavigationParameters();
@@ -51,9 +51,9 @@ namespace Nuits.Prism
         /// </summary>
         /// <typeparam name="TView"></typeparam>
         /// <returns></returns>
-        public static Navigation FromView<TView>() where TView : Page
+        public static PageNavigation FromView<TView>() where TView : Page
         {
-            return new Navigation(typeof(TView).Name);
+            return new PageNavigation(typeof(TView).Name);
         }
     }
 
@@ -61,9 +61,9 @@ namespace Nuits.Prism
     /// Class representing page navigation using ViewModel.
     /// </summary>
     /// <typeparam name="TViewModel"></typeparam>
-    public class Navigation<TViewModel> : Navigation where TViewModel : class, INotifyPropertyChanged
+    public class PageNavigation<TViewModel> : PageNavigation where TViewModel : BindableBase
     {
-        public Navigation() : base(NavigationNameProvider.GetNavigationName<TViewModel>())
+        public PageNavigation() : base(PageNavigationInfoProvider.GetPageNavigationInfo<TViewModel>().Name)
         {
         }
     }

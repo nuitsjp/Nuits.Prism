@@ -43,8 +43,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Navigation.cs" />
-    <Compile Include="NavigationServiceExtensions.cs" />
+    <Compile Include="Navigation\PageNavigation.cs" />
+    <Compile Include="Navigation\NavigationServiceExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
