@@ -22,16 +22,50 @@ namespace Nuits.Prism.Unity.Forms.Tests
                     .Setup(
                         m => m.RegisterTypeForNavigation(
                             unityContainer,
-                            typeof(TestPage),
-                            "Test"))
+                            typeof(UnityContainerExtensionsFixturePage),
+                            "UnityContainerExtensionsFixturePage"))
                     .Returns(unityContainer);
 
-                var result = unityContainer.RegisterTypeForViewModelNavigation<TestPage, TestViewModel>();
+                var result = unityContainer.RegisterTypeForViewModelNavigation<UnityContainerExtensionsFixturePageViewModel>();
                 Assert.Equal(unityContainer, result);
 
-                var page = new TestPage();
+                var page = new UnityContainerExtensionsFixturePage();
                 ViewModelLocator.SetAutowireViewModel(page, true);
-                Assert.Equal(typeof(TestViewModel), page.BindingContext.GetType());
+
+                Assert.NotNull(page.BindingContext);
+                Assert.Equal(typeof(UnityContainerExtensionsFixturePageViewModel), page.BindingContext.GetType());
+            }
+            finally
+            {
+                UnityContainerExtensions.UnityExtensionsProxy = new UnityExtensionsProxy();
+            }
+        }
+
+        [Fact]
+        public void RegisterTypeForViewModelNavigationWithViewType()
+        {
+            var unityExtensionsProxy = new Mock<UnityExtensionsProxy>();
+            UnityContainerExtensions.UnityExtensionsProxy = unityExtensionsProxy.Object;
+            try
+            {
+                var unityContainer = new Mock<IUnityContainer>().Object;
+
+                unityExtensionsProxy
+                    .Setup(
+                        m => m.RegisterTypeForNavigation(
+                            unityContainer,
+                            typeof(UnityContainerExtensionsFixturePage),
+                            "UnityContainerExtensionsFixturePage"))
+                    .Returns(unityContainer);
+
+                var result = unityContainer.RegisterTypeForViewModelNavigation<UnityContainerExtensionsFixturePage, UnityContainerExtensionsFixturePageViewModel>();
+                Assert.Equal(unityContainer, result);
+
+                var page = new UnityContainerExtensionsFixturePage();
+                ViewModelLocator.SetAutowireViewModel(page, true);
+
+                Assert.NotNull(page.BindingContext);
+                Assert.Equal(typeof(UnityContainerExtensionsFixturePageViewModel), page.BindingContext.GetType());
             }
             finally
             {
@@ -57,9 +91,9 @@ namespace Nuits.Prism.Unity.Forms.Tests
 
                 unityExtensionsProxy
                     .Setup(
-                        m => m.RegisterTypeForNavigationOnPlatform<TestPage, TestViewModel>(
+                        m => m.RegisterTypeForNavigationOnPlatform<UnityContainerExtensionsFixturePage, UnityContainerExtensionsFixturePageViewModel>(
                             unityContainer,
-                            "Test",
+                            "UnityContainerExtensionsFixturePage",
                             androidView,
                             iOSView,
                             otherView,
@@ -68,7 +102,7 @@ namespace Nuits.Prism.Unity.Forms.Tests
                     .Returns(unityContainer);
 
                 var result = 
-                    unityContainer.RegisterTypeForViewModelNavigationOnPlatform<TestPage, TestViewModel>(
+                    unityContainer.RegisterTypeForViewModelNavigationOnPlatform<UnityContainerExtensionsFixturePage, UnityContainerExtensionsFixturePageViewModel>(
                         androidView,
                         iOSView,
                         otherView,
@@ -97,16 +131,16 @@ namespace Nuits.Prism.Unity.Forms.Tests
 
                 unityExtensionsProxy
                     .Setup(
-                        m => m.RegisterTypeForNavigationOnIdiom<TestPage, TestViewModel>(
+                        m => m.RegisterTypeForNavigationOnIdiom<UnityContainerExtensionsFixturePage, UnityContainerExtensionsFixturePageViewModel>(
                             unityContainer,
-                            "Test",
+                            "UnityContainerExtensionsFixturePage",
                             desktopView,
                             tabletView,
                             phoneView))
                     .Returns(unityContainer);
 
                 var result =
-                    unityContainer.RegisterTypeForViewModelNavigationOnIdiom<TestPage, TestViewModel>(
+                    unityContainer.RegisterTypeForViewModelNavigationOnIdiom<UnityContainerExtensionsFixturePage, UnityContainerExtensionsFixturePageViewModel>(
                         desktopView,
                         tabletView,
                         phoneView);
@@ -117,15 +151,14 @@ namespace Nuits.Prism.Unity.Forms.Tests
                 UnityContainerExtensions.UnityExtensionsProxy = new UnityExtensionsProxy();
             }
         }
+    }
 
-        private class TestPage : Page
-        {
-        }
+    public class UnityContainerExtensionsFixturePage : Page
+    {
+    }
 
-        private class TestViewModel : INotifyPropertyChanged
-        {
-            public event PropertyChangedEventHandler PropertyChanged;
-        }
+    public class UnityContainerExtensionsFixturePageViewModel : BindableBase
+    {
     }
 }
 

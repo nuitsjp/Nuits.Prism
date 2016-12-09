@@ -25,7 +25,7 @@ namespace Nuits.Prism.Unity
         {
             var pageNavigationInfo = PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(TViewModel));
 
-            ViewModelLocationProvider.Register(pageNavigationInfo.Name, typeof(TViewModel));
+            ViewModelLocationProvider.Register(pageNavigationInfo.ViewType.Name, typeof(TViewModel));
 
             return UnityExtensionsProxy.RegisterTypeForNavigation(container, pageNavigationInfo.ViewType, pageNavigationInfo.Name);
         }
@@ -43,7 +43,7 @@ namespace Nuits.Prism.Unity
         {
             var pageNavigationInfo = PageNavigationInfoProvider.RegisterPageNavigationInfo(typeof(TView), typeof(TViewModel));
 
-            ViewModelLocationProvider.Register(pageNavigationInfo.Name, typeof(TViewModel));
+            ViewModelLocationProvider.Register(pageNavigationInfo.ViewType.Name, typeof(TViewModel));
 
             return UnityExtensionsProxy.RegisterTypeForNavigation(container, pageNavigationInfo.ViewType, pageNavigationInfo.Name);
         }

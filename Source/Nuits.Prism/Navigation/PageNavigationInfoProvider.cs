@@ -13,6 +13,7 @@ namespace Nuits.Prism.Navigation
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="viewType"></param>
         /// <param name="viewModelType"></param>
         /// <returns></returns>
         public static PageNavigationInfo RegisterPageNavigationInfo(Type viewType, Type viewModelType)
