@@ -45,16 +45,6 @@ namespace Nuits.Prism.Navigation
                 return Name;
             }
         }
-
-        /// <summary>
-        /// Create instance from Page.
-        /// </summary>
-        /// <typeparam name="TView"></typeparam>
-        /// <returns></returns>
-        public static PageNavigation FromView<TView>() where TView : Page
-        {
-            return new PageNavigation(typeof(TView).Name);
-        }
     }
 
     /// <summary>

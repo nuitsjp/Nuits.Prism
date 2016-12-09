@@ -89,7 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NavigationFixture.cs" />
+    <Compile Include="PageNavigationFixture.cs" />
     <Compile Include="NavigationServiceExtensionsFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
