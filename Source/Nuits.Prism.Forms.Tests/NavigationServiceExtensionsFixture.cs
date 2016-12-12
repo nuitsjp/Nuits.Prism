@@ -16,30 +16,30 @@ namespace Nuits.Prism.Forms.Tests
         [Fact]
         public void NavigateAsyncWithNavigationNameProvideInProvider()
         {
-            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(TestPageViewModel));
+            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(NavigationServiceExtensionsFixturePageViewModel));
 
             var navigationService = new Mock<INavigationService>();
             var task = Task.CompletedTask;
             navigationService
-                .Setup(m => m.NavigateAsync("TestPage", null, null, true))
+                .Setup(m => m.NavigateAsync("NavigationServiceExtensionsFixturePage", null, null, true))
                 .Returns(task);
 
-            Assert.Equal(task, navigationService.Object.NavigateAsync<TestPageViewModel>());
+            Assert.Equal(task, navigationService.Object.NavigateAsync<NavigationServiceExtensionsFixturePageViewModel>());
         }
 
         [Fact]
         public void NavigateAsyncWithFullParameterAndNavigationNameProvideInProvider()
         {
-            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(TestPageViewModel));
+            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(NavigationServiceExtensionsFixturePageViewModel));
 
             var navigationService = new Mock<INavigationService>();
             var task = Task.CompletedTask;
             var parameters = new NavigationParameters();
             navigationService
-                .Setup(m => m.NavigateAsync("TestPage", parameters, true, false))
+                .Setup(m => m.NavigateAsync("NavigationServiceExtensionsFixturePage", parameters, true, false))
                 .Returns(task);
 
-            Assert.Equal(task, navigationService.Object.NavigateAsync<TestPageViewModel>(parameters, true, false));
+            Assert.Equal(task, navigationService.Object.NavigateAsync<NavigationServiceExtensionsFixturePageViewModel>(parameters, true, false));
         }
 
         [Fact]
@@ -54,15 +54,15 @@ namespace Nuits.Prism.Forms.Tests
         [Fact]
         public void NavigateAsyncBySingleNavigation()
         {
-            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(TestPageViewModel));
+            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(NavigationServiceExtensionsFixturePageViewModel));
 
             var navigationService = new Mock<INavigationService>();
             var task = Task.CompletedTask;
 
-            var navigation = new PageNavigation<TestPageViewModel>();
+            var navigation = new PageNavigation<NavigationServiceExtensionsFixturePageViewModel>();
             navigation.Parameters["key1"] = "value1";
             navigationService
-                .Setup(m => m.NavigateAsync("TestPage?key1=value1", null, null, true))
+                .Setup(m => m.NavigateAsync("NavigationServiceExtensionsFixturePage?key1=value1", null, null, true))
                 .Returns(task);
 
             // ReSharper disable once RedundantExplicitParamsArrayCreation
@@ -73,20 +73,20 @@ namespace Nuits.Prism.Forms.Tests
         [Fact]
         public void NavigateAsyncByDeepLink()
         {
-            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(TestPageViewModel));
-            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(SecondPageViewModel));
+            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(NavigationServiceExtensionsFixturePageViewModel));
+            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(NavigationServiceExtensionsFixturePageSecondPageViewModel));
 
             var navigationService = new Mock<INavigationService>();
             var task = Task.CompletedTask;
 
-            var firstNavigation = new PageNavigation<TestPageViewModel>();
+            var firstNavigation = new PageNavigation<NavigationServiceExtensionsFixturePageViewModel>();
             firstNavigation.Parameters["key1"] = "value1";
-            var secondNavigation = new PageNavigation<SecondPageViewModel>();
+            var secondNavigation = new PageNavigation<NavigationServiceExtensionsFixturePageSecondPageViewModel>();
             secondNavigation.Parameters["key2"] = "value2";
 
 
             navigationService
-                .Setup(m => m.NavigateAsync("/TestPage?key1=value1/SecondPage?key2=value2", null, null, true))
+                .Setup(m => m.NavigateAsync("/NavigationServiceExtensionsFixturePage?key1=value1/NavigationServiceExtensionsFixturePageSecondPage?key2=value2", null, null, true))
                 .Returns(task);
 
             Assert.Equal(task, navigationService.Object.NavigateAsync(firstNavigation, secondNavigation));
@@ -96,20 +96,20 @@ namespace Nuits.Prism.Forms.Tests
         [Fact]
         public void NavigateAsyncByDeepLinkWithParams()
         {
-            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(TestPageViewModel));
-            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(SecondPageViewModel));
+            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(NavigationServiceExtensionsFixturePageViewModel));
+            PageNavigationInfoProvider.RegisterPageNavigationInfo(null, typeof(NavigationServiceExtensionsFixturePageSecondPageViewModel));
 
             var navigationService = new Mock<INavigationService>();
             var task = Task.CompletedTask;
 
-            var firstNavigation = new PageNavigation<TestPageViewModel>();
+            var firstNavigation = new PageNavigation<NavigationServiceExtensionsFixturePageViewModel>();
             firstNavigation.Parameters["key1"] = "value1";
-            var secondNavigation = new PageNavigation<SecondPageViewModel>();
+            var secondNavigation = new PageNavigation<NavigationServiceExtensionsFixturePageSecondPageViewModel>();
             secondNavigation.Parameters["key2"] = "value2";
 
 
             navigationService
-                .Setup(m => m.NavigateAsync("/TestPage?key1=value1/SecondPage?key2=value2", null, true, false))
+                .Setup(m => m.NavigateAsync("/NavigationServiceExtensionsFixturePage?key1=value1/NavigationServiceExtensionsFixturePageSecondPage?key2=value2", null, true, false))
                 .Returns(task);
 
             Assert.Equal(task, navigationService.Object.NavigateAsync(new PageNavigation[] { firstNavigation, secondNavigation }, true, false));
@@ -120,13 +120,20 @@ namespace Nuits.Prism.Forms.Tests
         {
 
         }
+    }
+    public class NavigationServiceExtensionsFixturePage
+    {
+    }
 
-        private class TestPageViewModel : BindableBase
-        {
-        }
+    public class NavigationServiceExtensionsFixturePageSecondPage
+    {
+    }
 
-        private class SecondPageViewModel : BindableBase
-        {
-        }
+    public class NavigationServiceExtensionsFixturePageViewModel : BindableBase
+    {
+    }
+
+    public class NavigationServiceExtensionsFixturePageSecondPageViewModel : BindableBase
+    {
     }
 }

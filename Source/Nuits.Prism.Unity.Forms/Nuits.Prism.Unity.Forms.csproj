@@ -37,10 +37,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\Nuits.Prism.Forms\Nuits.Prism.Forms.csproj">
-      <Project>{37b32adc-812f-4d57-be34-1a3a32c8b2d2}</Project>
-      <Name>Nuits.Prism.Forms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nuits.Prism\Nuits.Prism.csproj">
       <Project>{cd34a360-e249-40a0-83ca-8330797788a1}</Project>
       <Name>Nuits.Prism</Name>

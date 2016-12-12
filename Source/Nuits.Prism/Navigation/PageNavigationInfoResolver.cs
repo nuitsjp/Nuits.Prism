@@ -12,28 +12,43 @@ namespace Nuits.Prism.Navigation
     {
         public virtual PageNavigationInfo Resolve(Type viewType, Type viewModelType)
         {
-            var viewTypeName = viewModelType.Name.Substring(0, viewModelType.Name.IndexOf("ViewModel", StringComparison.Ordinal));
-            var viewTypeFullName = $"{viewModelType.Namespace.Replace("ViewModels", "Views")}.{viewTypeName}";
-            var type = viewType ?? viewModelType.GetTypeInfo().Assembly.GetType(viewTypeFullName);
-            return 
-                new PageNavigationInfo(
-                    viewTypeName,
-                    ResolveViewTypeForViewModelType(viewType, viewModelType), 
-                    viewModelType);
-        }
+            var pageNavigationAttribute = viewModelType.GetTypeInfo().GetCustomAttribute<PageNavigationAttribute>();
 
-        protected virtual Type ResolveViewTypeForViewModelType(Type viewType, Type viewModelType)
-        {
+            var pageNavigationName = pageNavigationAttribute?.NavigationName ?? ResolveNavigationName(viewModelType);
+
+            Type pageNavigationViewType;
             if (viewType == null)
             {
-                var viewTypeName = viewModelType.Name.Substring(0, viewModelType.Name.IndexOf("ViewModel", StringComparison.Ordinal));
-                var viewTypeFullName = $"{viewModelType.Namespace.Replace("ViewModels", "Views")}.{viewTypeName}";
-                return viewModelType.GetTypeInfo().Assembly.GetType(viewTypeFullName);
+                var viewTypeFullName = ResolveViewTypeFullName(viewModelType, pageNavigationAttribute?.ViewTypeName);
+                pageNavigationViewType = ResolveViewType(viewModelType, viewTypeFullName);
             }
             else
             {
-                return viewType;
+                pageNavigationViewType = viewType;
             }
+
+            if (pageNavigationViewType == null)
+            {
+                throw new InvalidOperationException($"View corresponding to ViewModel does not exist. ViewModel is {viewModelType.Name}.");
+            }
+
+            return new PageNavigationInfo(pageNavigationName, pageNavigationViewType, viewModelType);
+        }
+
+        protected virtual string ResolveNavigationName(Type viewModelType)
+        {
+            return viewModelType.Name.Substring(0, viewModelType.Name.IndexOf("ViewModel", StringComparison.Ordinal));
+        }
+
+        protected virtual string ResolveViewTypeFullName(Type viewModelType, string viewTypeNameOfAttribute)
+        {
+            var viewTypeName = viewTypeNameOfAttribute ?? viewModelType.Name.Substring(0, viewModelType.Name.IndexOf("ViewModel", StringComparison.Ordinal));
+            return $"{viewModelType.Namespace.Replace("ViewModels", "Views")}.{viewTypeName}";
+        }
+
+        protected virtual Type ResolveViewType(Type viewModelType, string viewTypeFullName)
+        {
+            return viewModelType.GetTypeInfo().Assembly.GetType(viewTypeFullName);
         }
     }
 }

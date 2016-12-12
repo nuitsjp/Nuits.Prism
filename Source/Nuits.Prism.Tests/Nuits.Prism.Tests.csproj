@@ -67,7 +67,7 @@
     <Compile Include="IPageNavigationService.cs" />
     <Compile Include="PageNavigationInfoProviderFixture.cs" />
     <Compile Include="PageNavigationInfoResolverFixture.cs" />
-    <Compile Include="PageNavigationNameAttributeFixture.cs" />
+    <Compile Include="PageNavigationAttributeFixture.cs" />
     <Compile Include="PageNavigationInfoFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

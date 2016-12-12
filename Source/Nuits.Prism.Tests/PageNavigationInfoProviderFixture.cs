@@ -12,6 +12,27 @@ namespace Nuits.Prism.Tests
     public class PageNavigationInfoProviderFixture
     {
         [Fact]
+        public void PageNavigationInfoResolver()
+        {
+            var original = PageNavigationInfoProvider.PageNavigationInfoResolver;
+            try
+            {
+                var custum = new CustumPageNavigationInfoResolver();
+                PageNavigationInfoProvider.PageNavigationInfoResolver = custum;
+                Assert.Equal(custum, PageNavigationInfoProvider.PageNavigationInfoResolver);
+            }
+            finally
+            {
+                PageNavigationInfoProvider.PageNavigationInfoResolver = original;
+            }
+
+        }
+
+        private class CustumPageNavigationInfoResolver : PageNavigationInfoResolver
+        {
+        }
+
+        [Fact]
         public void PageNavigationInfoProviderWhenRegisterd()
         {
             PageNavigationInfoProvider.RegisterPageNavigationInfo(

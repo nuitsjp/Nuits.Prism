@@ -6,7 +6,7 @@ using Prism.Navigation;
 
 namespace EmployeeManager.ViewModels
 {
-    [PageNavigationName("SelectedSection")]
+    [PageNavigation("SelectedSection", "SectionPage")]
     public class SectionPageViewModel : BindableBase, INavigationAware
     {
         public const string SectionIdKey = "sectionId";

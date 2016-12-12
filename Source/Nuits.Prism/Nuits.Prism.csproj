@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Navigation\PageNavigationInfoResolver.cs" />
-    <Compile Include="Navigation\PageNavigationNameAttribute.cs" />
+    <Compile Include="Navigation\PageNavigationAttribute.cs" />
     <Compile Include="Navigation\PageNavigationInfo.cs" />
     <Compile Include="Navigation\PageNavigationInfoProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
