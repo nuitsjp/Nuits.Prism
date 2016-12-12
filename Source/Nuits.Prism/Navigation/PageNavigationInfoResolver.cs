@@ -10,6 +10,16 @@ namespace Nuits.Prism.Navigation
 {
     public class PageNavigationInfoResolver
     {
+        private readonly Dictionary<Assembly, Assembly> assemblies = new Dictionary<Assembly, Assembly>();
+
+        public void AddAssemblies(Assembly viewTypeAssembly, Assembly viewModelTypeAssembly)
+        {
+            if (viewTypeAssembly == null) throw new ArgumentNullException(nameof(viewTypeAssembly));
+            if (viewModelTypeAssembly == null) throw new ArgumentNullException(nameof(viewModelTypeAssembly));
+
+            assemblies[viewModelTypeAssembly] = viewTypeAssembly;
+        }
+
         public virtual PageNavigationInfo Resolve(Type viewType, Type viewModelType)
         {
             var pageNavigationAttribute = viewModelType.GetTypeInfo().GetCustomAttribute<PageNavigationAttribute>();
@@ -46,9 +56,20 @@ namespace Nuits.Prism.Navigation
             return $"{viewModelType.Namespace.Replace("ViewModels", "Views")}.{viewTypeName}";
         }
 
+        protected Assembly GetViewTypeAssembly(Assembly viewModelTypeAssembly)
+        {
+            Assembly viewTypeAssembly;
+            if (!assemblies.TryGetValue(viewModelTypeAssembly, out viewTypeAssembly))
+            {
+                viewTypeAssembly = viewModelTypeAssembly;
+                assemblies[viewModelTypeAssembly] = viewTypeAssembly;
+            }
+            return viewTypeAssembly;
+        }
+
         protected virtual Type ResolveViewType(Type viewModelType, string viewTypeFullName)
         {
-            return viewModelType.GetTypeInfo().Assembly.GetType(viewTypeFullName);
+            return GetViewTypeAssembly(viewModelType.GetTypeInfo().Assembly).GetType(viewTypeFullName);
         }
     }
 }

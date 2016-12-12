@@ -75,6 +75,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nuits.Prism.Tests.ViewModels\Nuits.Prism.Tests.ViewModels.csproj">
+      <Project>{3c3c018a-de44-42b7-9c23-d6a45676063a}</Project>
+      <Name>Nuits.Prism.Tests.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuits.Prism.Tests.Views\Nuits.Prism.Tests.Views.csproj">
+      <Project>{c7ba5258-117a-4f25-9cb0-535ebd8f502e}</Project>
+      <Name>Nuits.Prism.Tests.Views</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nuits.Prism\Nuits.Prism.csproj">
       <Project>{cd34a360-e249-40a0-83ca-8330797788a1}</Project>
       <Name>Nuits.Prism</Name>

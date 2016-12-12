@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Nuits.Prism.Navigation;
+using Nuits.Prism.Tests.ViewModels;
+using Nuits.Prism.Tests.Views;
 using Xunit;
 
 namespace Nuits.Prism.Tests
@@ -111,6 +114,42 @@ namespace Nuits.Prism.Tests
                     typeof(PageNavigationInfoResolverFixtureWhenNotExistViewViewModel));
             });
             Assert.Equal("View corresponding to ViewModel does not exist. ViewModel is PageNavigationInfoResolverFixtureWhenNotExistViewViewModel.", actual.Message);
+        }
+
+        [Fact]
+        public void ResolveWhenAnotherAssembly()
+        {
+            var pageNavigationInfoResolver = new PageNavigationInfoResolver();
+            pageNavigationInfoResolver.AddAssemblies(typeof(TestPage).Assembly, typeof(TestPageViewModel).Assembly);
+
+            var actual = pageNavigationInfoResolver.Resolve(null, typeof(TestPageViewModel));
+
+            Assert.NotNull(actual);
+
+            Assert.NotNull(actual.Name);
+            Assert.Equal("TestPage", actual.Name);
+
+            Assert.NotNull(actual.ViewType);
+            Assert.Equal(typeof(TestPage), actual.ViewType);
+
+            Assert.NotNull(actual.ViewModelType);
+            Assert.Equal(typeof(TestPageViewModel), actual.ViewModelType);
+        }
+
+        [Fact]
+        public void AddAssembliesWhenViewTypeAssemblyIsNull()
+        {
+            var pageNavigationInfoResolver = new PageNavigationInfoResolver();
+            Assert.Throws<ArgumentNullException>(
+                () => pageNavigationInfoResolver.AddAssemblies(null, GetType().GetTypeInfo().Assembly));
+        }
+
+        [Fact]
+        public void AddAssembliesWhenViewModelTypeAssemblyIsNull()
+        {
+            var pageNavigationInfoResolver = new PageNavigationInfoResolver();
+            Assert.Throws<ArgumentNullException>(
+                () => pageNavigationInfoResolver.AddAssemblies(GetType().GetTypeInfo().Assembly, null));
         }
     }
 
