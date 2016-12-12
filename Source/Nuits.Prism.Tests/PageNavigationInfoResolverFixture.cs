@@ -131,7 +131,7 @@ namespace Nuits.Prism.Tests
     {
     }
 
-    [PageNavigation(null, "PageNavigationInfoResolverFixtureWhenNavigationNameIsNullPage")]
+    [PageNavigation(viewTypeName: "PageNavigationInfoResolverFixtureWhenNavigationNameIsNullPage")]
     public class PageNavigationInfoResolverFixtureWhenNavigationNameIsNullPageViewModel
     {
     }

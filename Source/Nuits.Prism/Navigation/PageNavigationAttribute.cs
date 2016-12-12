@@ -22,7 +22,7 @@ namespace Nuits.Prism.Navigation
         /// </summary>
         /// <param name="navigationName">Page navigation navigationName.</param>
         /// <param name="viewTypeName"></param>
-        public PageNavigationAttribute(string navigationName, string viewTypeName = null)
+        public PageNavigationAttribute(string navigationName = null, string viewTypeName = null)
         {
             NavigationName = navigationName;
             ViewTypeName = viewTypeName ?? NavigationName;
