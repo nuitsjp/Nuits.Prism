@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Nuits.Prism.FormsExtensions</id>
+    <version>0.1.0-pre1</version>
+    <authors>nuits.jp</authors>
+    <owners>nuits.jp</owners>
+    <licenseUrl>https://github.com/nuitsjp/Nuits.Prism/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/nuitsjp/Nuits.Prism</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Extension library that supports "View Model First Navigation" for Prism.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>xamarin forms prism view model first</tags>
+    <dependencies>
+      <dependency id="Prism.Core" version="6.2.0" />
+      <dependency id="Prism.Forms" version="6.2.0" />
+      <dependency id="Prism.Unity.Forms" version="6.2.0" />
+      <dependency id="Xamarin.Forms" version="2.3.1.144" />
+    </dependencies>
+  </metadata>
+  <files>
+		<file src="bin\Release\Nuits.Prism.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Prism.Forms.Toolkit.dll" />
+		<file src="bin\Release\Nuits.Prism.Forms.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Prism.Forms.Toolkit.dll" />
+		<file src="bin\Release\Nuits.Prism.Unity.Forms.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Prism.Forms.Toolkit.dll" />
+  </files>
+</package>

@@ -1,0 +1,1 @@
+NuGet.exe pack ..\Source\Nuits.Prism.Unity.Forms\Nuits.Prism.Unity.Forms.csproj.nuspec
