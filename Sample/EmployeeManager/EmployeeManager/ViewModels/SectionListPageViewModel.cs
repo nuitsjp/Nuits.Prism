@@ -49,5 +49,9 @@ namespace EmployeeManager.ViewModels
         {
             await _referSections.Load();
         }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
     }
 }
