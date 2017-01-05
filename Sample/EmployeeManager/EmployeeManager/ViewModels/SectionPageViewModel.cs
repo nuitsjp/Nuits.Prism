@@ -43,5 +43,9 @@ namespace EmployeeManager.ViewModels
                 await _referSections.SelectSection(int.Parse(sectionId));
             }
         }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
     }
 }
