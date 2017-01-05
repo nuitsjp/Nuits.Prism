@@ -108,11 +108,10 @@ namespace Nuits.Prism.Tests
         {
             var pageNavigationInfoResolver = new PageNavigationInfoResolver();
             var actual = Assert.Throws<InvalidOperationException>(() =>
-            {
-                pageNavigationInfoResolver.Resolve(
+                    pageNavigationInfoResolver.Resolve(
                     null,
-                    typeof(PageNavigationInfoResolverFixtureWhenNotExistViewViewModel));
-            });
+                    typeof(PageNavigationInfoResolverFixtureWhenNotExistViewViewModel)));
+
             Assert.Equal("View corresponding to ViewModel does not exist. ViewModel is PageNavigationInfoResolverFixtureWhenNotExistViewViewModel.", actual.Message);
         }
 

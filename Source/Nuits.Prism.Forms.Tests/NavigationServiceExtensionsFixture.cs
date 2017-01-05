@@ -115,11 +115,6 @@ namespace Nuits.Prism.Forms.Tests
             Assert.Equal(task, navigationService.Object.NavigateAsync(new PageNavigation[] { firstNavigation, secondNavigation }, true, false));
 
         }
-
-        public void Test(bool? useModalNavigation = null, bool animated = true, params PageNavigation[] navigations)
-        {
-
-        }
     }
     public class NavigationServiceExtensionsFixturePage
     {

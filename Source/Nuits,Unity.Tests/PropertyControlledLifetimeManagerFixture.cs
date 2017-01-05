@@ -20,6 +20,20 @@ namespace Nuits_Unity.Tests
         }
 
         [Fact]
+        public void SetValueWhenArgumentIsNull()
+        {
+            var actual = new PropertyControlledLifetimeManager<MockObject>(x => x.IsCompleted);
+            Assert.Throws<ArgumentNullException>(() => actual.SetValue(null));
+        }
+
+        [Fact]
+        public void SetValueWhenArgumentIsInvalidType()
+        {
+            var actual = new PropertyControlledLifetimeManager<MockObject>(x => x.IsCompleted);
+            Assert.Throws<ArgumentException>(() => actual.SetValue(string.Empty));
+        }
+
+        [Fact]
         public void PropertyControlledLifetimeWhenValueIsNotDisposable()
         {
             var actual = new PropertyControlledLifetimeManager<MockObject>(x => x.IsCompleted);
@@ -66,8 +80,6 @@ namespace Nuits_Unity.Tests
 
             private void SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
             {
-                if (Equals(field, value)) return;
-
                 field = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
