@@ -1,4 +1,4 @@
-﻿namespace EmployeeManager.Models
+﻿namespace EmployeeManager
 {
     public class Section
     {

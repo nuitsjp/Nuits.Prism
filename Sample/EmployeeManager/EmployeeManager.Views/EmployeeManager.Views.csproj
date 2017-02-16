@@ -96,6 +96,10 @@
       <Project>{adf87300-35b0-4347-8ddd-e55635fbbf0b}</Project>
       <Name>EmployeeManager.ViewModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EmployeeManager\EmployeeManager.csproj">
+      <Project>{36294832-bb2f-46a2-b417-53ce4380f1db}</Project>
+      <Name>EmployeeManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\..\Source\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\..\Source\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

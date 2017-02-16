@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("EmployeeManager.App")]
+[assembly: AssemblyTitle("EmployeeManager.Application")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EmployeeManager.App")]
-[assembly: AssemblyCopyright("Copyright (C)  2017")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("EmployeeManager.Application")]
+[assembly: AssemblyCopyright("Copyright (C) Microsoft 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("ja")]

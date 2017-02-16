@@ -34,10 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Section.cs" />
-    <Compile Include="SectionDetail.cs" />
     <Compile Include="Services\IEmployeeService.cs" />
     <Compile Include="Services\Local\EmployeeService.cs" />
     <Compile Include="Usecases\IReferSections.cs" />
@@ -51,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeeManager\EmployeeManager.csproj">
+      <Project>{36294832-bb2f-46a2-b417-53ce4380f1db}</Project>
+      <Name>EmployeeManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

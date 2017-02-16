@@ -1,6 +1,6 @@
 ﻿using Prism.Mvvm;
 
-namespace EmployeeManager.Models
+namespace EmployeeManager
 {
     public class Employee : BindableBase
     {

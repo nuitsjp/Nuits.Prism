@@ -3,17 +3,16 @@ using EmployeeManager.Models.Services;
 using EmployeeManager.Models.Services.Local;
 using EmployeeManager.Models.Usecases;
 using EmployeeManager.ViewModels;
-using Prism.Unity;
 using EmployeeManager.Views;
 using Microsoft.Practices.Unity;
-using Nuits.Prism;
 using Nuits.Prism.Navigation;
 using Nuits.Prism.Unity;
 using Prism.Mvvm;
+using Prism.Unity;
 using Xamarin.Forms;
 using ContainerControlledLifetimeManager = Microsoft.Practices.Unity.ContainerControlledLifetimeManager;
 
-namespace EmployeeManager
+namespace EmployeeManager.Application
 {
     public partial class App
     {

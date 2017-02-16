@@ -23,7 +23,7 @@ namespace EmployeeManager.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new EmployeeManager.App(new UwpInitializer()));
+            LoadApplication(new Application.App(new UwpInitializer()));
         }
     }
 
