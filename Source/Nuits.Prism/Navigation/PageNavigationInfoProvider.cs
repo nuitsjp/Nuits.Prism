@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Prism.Mvvm;
 
@@ -28,6 +29,16 @@ namespace Nuits.Prism.Navigation
         public static PageNavigationInfo GetPageNavigationInfo<TViewModel>() where TViewModel : BindableBase
         {
             return GetPageNavigationInfo(typeof(TViewModel));
+        }
+
+        public static Type GetViewModelType<TViewModel>() where TViewModel : BindableBase
+        {
+            return GetViewModelType(typeof(TViewModel));
+        }
+
+        public static Type GetViewModelType(Type viewType)
+        {
+            return PageNavigationInfos.Values.FirstOrDefault(x => x.ViewType == viewType)?.ViewModelType;
         }
 
         public static PageNavigationInfo GetPageNavigationInfo(Type viewModelType)

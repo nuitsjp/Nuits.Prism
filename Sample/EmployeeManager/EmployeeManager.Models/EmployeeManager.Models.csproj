@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CD34A360-E249-40A0-83CA-8330797788A1}</ProjectGuid>
+    <ProjectGuid>{950A5B09-E877-4A93-94C8-16E811086A02}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nuits.Prism</RootNamespace>
-    <AssemblyName>Nuits.Prism</AssemblyName>
+    <RootNamespace>EmployeeManager.Models</RootNamespace>
+    <AssemblyName>EmployeeManager.Models</AssemblyName>
     <DefaultLanguage>ja-JP</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,25 +34,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Navigation\PageNavigationInfoResolver.cs" />
-    <Compile Include="Navigation\PageNavigationAttribute.cs" />
-    <Compile Include="Navigation\PageNavigationInfo.cs" />
-    <Compile Include="Navigation\PageNavigationInfoProvider.cs" />
-    <Compile Include="Navigation\ViewModelProvider.cs" />
+    <Compile Include="Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Section.cs" />
+    <Compile Include="SectionDetail.cs" />
+    <Compile Include="Services\IEmployeeService.cs" />
+    <Compile Include="Services\Local\EmployeeService.cs" />
+    <Compile Include="Usecases\IReferSections.cs" />
+    <Compile Include="Usecases\ReferSections.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Core.6.3.0-pre1\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.dll</HintPath>
+      <HintPath>..\..\..\Source\packages\Prism.Core.6.3.0-pre1\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

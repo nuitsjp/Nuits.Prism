@@ -1,4 +1,5 @@
-﻿using EmployeeManager.Models.Services;
+﻿using System.Reflection;
+using EmployeeManager.Models.Services;
 using EmployeeManager.Models.Services.Local;
 using EmployeeManager.Models.Usecases;
 using EmployeeManager.ViewModels;
@@ -8,6 +9,7 @@ using Microsoft.Practices.Unity;
 using Nuits.Prism;
 using Nuits.Prism.Navigation;
 using Nuits.Prism.Unity;
+using Prism.Mvvm;
 using Xamarin.Forms;
 using ContainerControlledLifetimeManager = Microsoft.Practices.Unity.ContainerControlledLifetimeManager;
 
@@ -17,8 +19,15 @@ namespace EmployeeManager
     {
         public App(IPlatformInitializer initializer = null) : base(initializer) { }
 
+        protected override void ConfigureContainer()
+        {
+            base.ConfigureContainer();
+            ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(PageNavigationInfoProvider.GetViewModelType);
+        }
+
         protected override void RegisterTypes()
         {
+            PageNavigationInfoProvider.PageNavigationInfoResolver.AddAssemblies(typeof(MainPage).GetTypeInfo().Assembly, typeof(MainPageViewModel).GetTypeInfo().Assembly);
             // Add Services.
             Container.RegisterType(typeof(IEmployeeService), typeof(EmployeeService), new ContainerControlledLifetimeManager());
             //// Add Usecases.

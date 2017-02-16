@@ -4,6 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EmployeeManager.Views.MainPage"
+             xmlns:viewModels="clr-namespace:EmployeeManager.ViewModels;assembly=EmployeeManager.ViewModels"
              Title="Menu">
   <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
     <Button Text="Section List" Command="{Binding NavigationSectionListCommand}"/>

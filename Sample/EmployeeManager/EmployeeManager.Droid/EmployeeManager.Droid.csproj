@@ -154,8 +154,9 @@
     <Content Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EmployeeManager\EmployeeManager.csproj">
-      <Name>EmployeeManager</Name>
+    <ProjectReference Include="..\EmployeeManager.App\EmployeeManager.App.csproj">
+      <Project>{558d5d11-4696-4b8e-8cca-70e4a0e66e26}</Project>
+      <Name>EmployeeManager.App</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
