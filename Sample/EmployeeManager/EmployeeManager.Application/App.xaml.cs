@@ -21,12 +21,12 @@ namespace EmployeeManager.Application
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
-            ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(PageNavigationInfoProvider.GetViewModelType);
+            ViewTypeToViewModelTypeResolver.MappingAssemblies(typeof(MainPage).GetTypeInfo().Assembly, typeof(MainPageViewModel).GetTypeInfo().Assembly);
+            ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(ViewTypeToViewModelTypeResolver.Resolve);
         }
 
         protected override void RegisterTypes()
         {
-            PageNavigationInfoProvider.PageNavigationInfoResolver.AddAssemblies(typeof(MainPage).GetTypeInfo().Assembly, typeof(MainPageViewModel).GetTypeInfo().Assembly);
             // Add Services.
             Container.RegisterType(typeof(IEmployeeService), typeof(EmployeeService), new ContainerControlledLifetimeManager());
             //// Add Usecases.
@@ -34,18 +34,20 @@ namespace EmployeeManager.Application
 
             // Add Views.
             Container.RegisterTypeForNavigation<NavigationPage>();
-            Container.RegisterTypeForViewModelNavigation<MainPageViewModel>();
-            Container.RegisterTypeForViewModelNavigation<SectionListPageViewModel>();
-            Container.RegisterTypeForViewModelNavigation<SectionPageViewModel>();
+            Container.RegisterTypeForNavigation<MainPage>();
+            //Container.RegisterTypeForViewModelNavigation<MainPageViewModel>();
+            //Container.RegisterTypeForViewModelNavigation<SectionListPageViewModel>();
+            //Container.RegisterTypeForViewModelNavigation<SectionPageViewModel>();
         }
 
         protected override void OnInitialized()
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync(
-                new PageNavigation(nameof(NavigationPage)),
-                new PageNavigation<MainPageViewModel>());
+            //NavigationService.NavigateAsync(
+            //    new PageNavigation(nameof(NavigationPage)),
+            //    new PageNavigation<MainPageViewModel>());
+            NavigationService.NavigateAsync("MainPage");
         }
     }
 }
